@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/app:cached
+    networks:
+      - default
+    command: sleep infinity
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/nestjsapidevcontainer"
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - default
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: nestjsapidevcontainer
+    ports:
+      - 5432:5432
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  postgres-data:
