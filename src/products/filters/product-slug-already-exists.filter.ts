@@ -4,7 +4,7 @@ import { Response } from 'express';
 
 @Catch(ProductSlugAlreadyExistsError)
 export class ProductSlugAlreadyExistsFilter implements ExceptionFilter {
-  catch(exception: Error, host: ArgumentsHost) {
+  catch(exception: ProductSlugAlreadyExistsError, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
 

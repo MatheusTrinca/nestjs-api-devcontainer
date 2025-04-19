@@ -2,19 +2,23 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ProductSlugAlreadyExistsFilter } from './products/filters/product-slug-already-exists.filter';
 import { ValidationPipe } from '@nestjs/common';
+import { NotFoundErrorFilter } from './common/filters/not-found-error.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalFilters(new ProductSlugAlreadyExistsFilter());
+  app.useGlobalFilters(
+    new ProductSlugAlreadyExistsFilter(),
+    new NotFoundErrorFilter(),
+  );
 
   app.useGlobalPipes(
     new ValidationPipe({
       errorHttpStatusCode: 422,
-      transform: true,
-      transformOptions: {
-        enableImplicitConversion: true,
-      },
+      // transform: true,
+      // transformOptions: {
+      //   enableImplicitConversion: true,
+      // },
     }),
   );
 

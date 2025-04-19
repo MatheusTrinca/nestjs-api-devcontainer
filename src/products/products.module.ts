@@ -1,15 +1,15 @@
 import { Module, OnModuleInit } from '@nestjs/common';
-import { ProductsService } from './products.service';
-import { ProductsController } from './products.controller';
+import { AdminProductsService } from './admin/admin-products.service';
+import { AdminProductsController } from './admin/admin-products.controller';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({
-  controllers: [ProductsController],
-  providers: [ProductsService],
+  controllers: [AdminProductsController],
+  providers: [AdminProductsService],
 })
 export class ProductsModule implements OnModuleInit {
   constructor(
-    private readonly productsService: ProductsService,
+    private readonly adminProductsService: AdminProductsService,
     private readonly prismaService: PrismaService,
   ) {}
 
@@ -24,7 +24,7 @@ export class ProductsModule implements OnModuleInit {
     }));
 
     for (const product of products) {
-      await this.productsService.create(product);
+      await this.adminProductsService.create(product);
     }
   }
 }

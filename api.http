@@ -1,11 +1,11 @@
 ### Create product
 # @name createProduct
-POST http://localhost:3000/products
+POST http://localhost:3000/admin/products
 Content-Type: application/json
 
 {
   "name": "jj",
-  "slug": "product-3",
+  "slug": "product-3jj",
   "description": "Product 3 description",
   "price": 7.59
 }
@@ -14,21 +14,21 @@ Content-Type: application/json
 @productId = {{ createProduct.response.body.id }}
 
 ### Get all products
-GET http://localhost:3000/products
+GET http://localhost:3000/admin/products
 
 ### Get one product
-GET http://localhost:3000/products/{{productId}}
+GET http://localhost:3000/admin/products/{{productId}}
 
 ### Update one product
-PATCH http://localhost:3000/products/{{productId}}
+PATCH http://localhost:3000/admin/products/cm9oetol10000ntxeoxtt2iog
 Content-Type: application/json
 
 {
-  "name": "Product 33333",
-  "slug": "product-33333",
+  "name": "1",
+  "slug": "product-3333",
   "description": "Product 3 description",
   "price": 7.59
 }
 
 ### Delete one product
-DELETE http://localhost:3000/products/{{productId}}
+DELETE http://localhost:3000/admin/products/{{productId}}
