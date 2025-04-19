@@ -2,10 +2,12 @@ import { Module, OnModuleInit } from '@nestjs/common';
 import { AdminProductsService } from './admin/admin-products.service';
 import { AdminProductsController } from './admin/admin-products.controller';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { ProductsController } from './public/products.controller';
+import { ProductsService } from './public/products.service';
 
 @Module({
-  controllers: [AdminProductsController],
-  providers: [AdminProductsService],
+  controllers: [AdminProductsController, ProductsController],
+  providers: [AdminProductsService, ProductsService],
 })
 export class ProductsModule implements OnModuleInit {
   constructor(

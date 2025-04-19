@@ -1,3 +1,5 @@
+### ADMIN PRODUCTS
+
 ### Create product
 # @name createProduct
 POST http://localhost:3000/admin/products
@@ -12,6 +14,8 @@ Content-Type: application/json
 
 ###
 @productId = {{ createProduct.response.body.id }}
+###
+@productSlug = {{ createProduct.response.body.slug }}
 
 ### Get all products
 GET http://localhost:3000/admin/products
@@ -19,8 +23,11 @@ GET http://localhost:3000/admin/products
 ### Get one product
 GET http://localhost:3000/admin/products/{{productId}}
 
+###
+
+
 ### Update one product
-PATCH http://localhost:3000/admin/products/cm9oetol10000ntxeoxtt2iog
+PATCH http://localhost:3000/admin/products/{{productId}}
 Content-Type: application/json
 
 {
@@ -32,3 +39,13 @@ Content-Type: application/json
 
 ### Delete one product
 DELETE http://localhost:3000/admin/products/{{productId}}
+
+
+### OPEN PRODUCTS
+
+### Get all products
+GET http://localhost:3000/products?name=qeasdasd
+
+### Get one product
+GET http://localhost:3000/products/{{productSlug}}
+
