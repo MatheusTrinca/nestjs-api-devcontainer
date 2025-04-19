@@ -8,3 +8,6 @@ CREATE TABLE "Product" (
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Product_slug_key" ON "Product"("slug");
