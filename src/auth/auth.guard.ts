@@ -9,7 +9,7 @@ import { Request } from 'express';
 
 interface JwtPayload {
   sub: string;
-  role: string[];
+  roles: string[];
 }
 
 @Injectable()

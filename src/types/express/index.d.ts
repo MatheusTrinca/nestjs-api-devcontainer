@@ -5,7 +5,7 @@ declare global {
     interface Request {
       user?: {
         sub: string;
-        role: UserRoles[];
+        roles: UserRoles[];
       };
     }
   }
