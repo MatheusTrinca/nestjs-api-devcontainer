@@ -14,9 +14,10 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { Roles } from 'src/auth/roles/roles.decorator';
 import { UserRoles } from 'src/auth/roles/roles.enum';
+import { RolesGuard } from 'src/auth/roles/roles.guard';
 
 @Roles(UserRoles.Admin)
-@UseGuards(AuthGuard)
+@UseGuards(AuthGuard, RolesGuard)
 @Controller('admin/products')
 export class AdminProductsController {
   constructor(private readonly adminProductsService: AdminProductsService) {}

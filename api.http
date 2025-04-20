@@ -1,4 +1,4 @@
-### Login
+### LOGIN ADMIN
 # @name adminLogin
 POST http://localhost:3000/auth/login
 Content-Type: application/json
@@ -10,6 +10,19 @@ Content-Type: application/json
 
 ###
 @adminToken = {{ adminLogin.response.body.access_token }}
+
+### LOGIN CUSTOMER
+# @name customerLogin
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "customer@example.com",
+  "password": "password"
+}
+
+###
+@customerToken = {{ customerLogin.response.body.access_token }}
 
 
 ### ADMIN PRODUCTS
