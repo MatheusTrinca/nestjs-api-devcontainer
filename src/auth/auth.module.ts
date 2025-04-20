@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { JwtModule } from '@nestjs/jwt';
+import { UserRoles } from './roles/roles.enum';
 
 @Module({
   imports: [
@@ -31,7 +32,7 @@ export class AuthModule implements OnModuleInit {
         data: {
           name: 'Admin',
           email: 'admin@example.com',
-          role: 'Admin',
+          role: UserRoles.Admin,
           password: bcrypt.hashSync('password', 10),
         },
       });
@@ -48,7 +49,7 @@ export class AuthModule implements OnModuleInit {
         data: {
           name: 'Customer',
           email: 'customer@example.com',
-          role: 'Customer',
+          role: UserRoles.Customer,
           password: bcrypt.hashSync('password', 10),
         },
       });
