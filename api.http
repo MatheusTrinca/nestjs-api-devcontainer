@@ -1,3 +1,17 @@
+### Login
+# @name adminLogin
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password"
+}
+
+###
+@adminToken = {{ adminLogin.response.body.access_token }}
+
+
 ### ADMIN PRODUCTS
 
 ### Create product
